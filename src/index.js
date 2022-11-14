@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {createStore} from "redux"
+
+// STORE -> holds all the data or state. It is one big state that can be accessed from anywhere
+// ACTION INCREMENT -> describes what you want to do(in this case, incrementing)
+// REDUCER -> modifies the store depending on what action is taken
+// DISPATCH -> where action is sent to the reducer
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
