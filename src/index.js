@@ -4,42 +4,51 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore} from 'redux'
+import allReducer from './reducers'
+import {Provider} from 'react-redux'
+
+const store = createStore(allReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 
 
-// STORE -> holds all the data or state. It is one big state that can be accessed from anywhere
-// ACTION INCREMENT -> describes what you want to do(in this case, incrementing)
-const increment = () => {
-  return{
-    type: 'INCREMENT'
-  }
-}
-const decrement = () => {
-  return{
-    type: 'DECREMENT'
-  }
-}
-// REDUCER -> modifies the store depending on what action is taken
-const counter = (state = 0, action) => {
-  switch(action.type){
-    case "INCREMENT":
-      return state + 1;
-    case "DECREMENT":
-      return state - 1;
-  }
-};
-let store = createStore(counter)
-// Display it in the console
-store.subscribe(() => console.log(store.getState()))
+// // STORE -> holds all the data or state. It is one big state that can be accessed from anywhere
+// // ACTION INCREMENT -> describes what you want to do(in this case, incrementing)
+// const increment = () => {
+//   return{
+//     type: 'INCREMENT'
+//   }
+// }
+// const decrement = () => {
+//   return{
+//     type: 'DECREMENT'
+//   }
+// }
+// // REDUCER -> modifies the store depending on what action is taken
+// const counter = (state = 0, action) => {
+//   switch(action.type){
+//     case "INCREMENT":
+//       return state + 1;
+//     case "DECREMENT":
+//       return state - 1;
+//   }
+// };
+// let store = createStore(counter)
+// // Display it in the console
+// store.subscribe(() => console.log(store.getState()))
 
-// DISPATCH -> where action is sent to the reducer
-store.dispatch(increment())
+// // DISPATCH -> where action is sent to the reducer
+// store.dispatch(increment())
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
     <App />
   </React.StrictMode>
+  </Provider>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
