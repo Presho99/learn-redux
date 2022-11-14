@@ -28,7 +28,11 @@ const counter = (state = 0, action) => {
   }
 };
 let store = createStore(counter)
+// Display it in the console
+store.subscribe(() => console.log(store.getState()))
+
 // DISPATCH -> where action is sent to the reducer
+store.dispatch(increment())
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
