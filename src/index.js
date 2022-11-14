@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createStore} from "redux"
+import {createStore} from 'redux'
 
 
 // STORE -> holds all the data or state. It is one big state that can be accessed from anywhere
@@ -19,6 +19,15 @@ const decrement = () => {
   }
 }
 // REDUCER -> modifies the store depending on what action is taken
+const counter = (state = 0, action) => {
+  switch(action.type){
+    case "INCREMENT":
+      return state + 1;
+    case "DECREMENT":
+      return state - 1;
+  }
+};
+let store = createStore(counter)
 // DISPATCH -> where action is sent to the reducer
 
 
